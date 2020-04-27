@@ -30,14 +30,14 @@ def _main():
 
     logging = TensorBoard(log_dir=log_dir)
 
-    # ModelCheckpoint 回调检查模型周期 更改为每10次检查
+    # ModelCheckpoint 回调检查模型周期 更改为每100次检查
     checkpoint = ModelCheckpoint(log_dir + 'ep{epoch:03d}-loss{loss:.3f}-val_loss{val_loss:.3f}.h5',
-        monitor='val_loss', save_weights_only=True, save_best_only=True, period=10)
+        monitor='val_loss', save_weights_only=True, save_best_only=True, period=100)
     reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=3, verbose=1)
     early_stopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=6000, verbose=1)
 
     # 对输入划分训练集与测试集的比重
-    val_split = 0.3
+    val_split = 0.1
     with open(annotation_path) as f:
         lines = f.readlines()
     np.random.seed(10101)
@@ -53,7 +53,7 @@ def _main():
             return K.mean(y_pred)
         model.compile(optimizer=Adam(lr=1e-3), loss={
             # use custom yolo_loss Lambda layer.
-            'yolo_loss': lambda y_true, y_pred: y_pred}, metrics=['acc'])
+            'yolo_loss': lambda y_true, y_pred: y_pred})
 
         # batch_size 需要针对显存更改数量
         batch_size = 5
@@ -64,7 +64,7 @@ def _main():
                 steps_per_epoch=max(1, num_train//batch_size),
                 validation_data=data_generator_wrapper(lines[num_train:], batch_size, input_shape, anchors, num_classes),
                 validation_steps=max(1, num_val//batch_size),
-                epochs=50, 
+                epochs=300, 
                 initial_epoch=0,
                 callbacks=[logging, checkpoint])
         model.save_weights(log_dir + 'trained_weights_stage_1.h5')
@@ -86,7 +86,7 @@ def _main():
             steps_per_epoch=max(1, num_train//batch_size),
             validation_data=data_generator_wrapper(lines[num_train:], batch_size, input_shape, anchors, num_classes),
             validation_steps=max(1, num_val//batch_size),
-            epochs=50,
+            epochs=300,
             initial_epoch=50)
         model.save_weights(log_dir + 'trained_weights_final.h5')
 

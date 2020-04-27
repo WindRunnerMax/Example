@@ -3,7 +3,7 @@ from os import getcwd
 
 sets=[('2007', 'train'), ('2007', 'val'), ('2007', 'test')]
 
-classes = ["person"]
+classes = ["red","green","yellow"]
 
 
 def convert_annotation(year, image_id, list_file):

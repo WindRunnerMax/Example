@@ -27,6 +27,7 @@ class YOLO(object):
         "iou" : 0.45,
         "model_image_size" : (416, 416),
         "gpu_num" : 1,
+        "max_boxes": 20
     }
 
     @classmethod
@@ -42,7 +43,7 @@ class YOLO(object):
         self.class_names = self._get_class()
         self.anchors = self._get_anchors()
         self.sess = K.get_session()
-        self.boxes, self.scores, self.classes = self.generate()
+        self.boxes, self.scores, self.classes = self.generate(self.max_boxes)
 
     def _get_class(self):
         classes_path = os.path.expanduser(self.classes_path)
@@ -58,7 +59,7 @@ class YOLO(object):
         anchors = [float(x) for x in anchors.split(',')]
         return np.array(anchors).reshape(-1, 2)
 
-    def generate(self):
+    def generate(self, max_boxes):
         model_path = os.path.expanduser(self.model_path)
         assert model_path.endswith('.h5'), 'Keras model or weights must be a .h5 file.'
 
@@ -96,7 +97,7 @@ class YOLO(object):
             self.yolo_model = multi_gpu_model(self.yolo_model, gpus=self.gpu_num)
         boxes, scores, classes = yolo_eval(self.yolo_model.output, self.anchors,
                 len(self.class_names), self.input_image_shape,
-                score_threshold=self.score, iou_threshold=self.iou)
+                score_threshold=self.score, iou_threshold=self.iou,max_boxes = max_boxes)
         return boxes, scores, classes
 
     def detect_image(self, image):

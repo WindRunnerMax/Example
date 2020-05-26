@@ -1,0 +1,65 @@
+@import "//at.alicdn.com/t/font_1844225_yz2bwdnajp.css";
+#catalogTitle{
+    border-bottom: 1px solid #eee;
+    padding: 6px 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.catalog{
+    width: 160px;
+    padding: 0px;
+    font-size: 14px;
+    line-height: 27px;
+    position: fixed;
+    right: 3px;
+    top: 170px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 600px;
+    transition: all .5s;
+}
+.catalog > li{
+    padding: 0 10px;
+    color: #505d6b;
+    cursor: pointer;
+    list-style: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.catalog > li:hover{
+    color: #4C98F7;
+}
+.level3{
+    margin-left: 10px;
+}
+.iconfont{
+    font-weight: normal;
+    font-size: 16px;
+}
+.contract{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 170px;
+    right: 3px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all .5s;
+    overflow: hidden;
+}
+.hide{
+    border: 1px solid #eee;
+    right: -180px; 
+    top: 170px;
+    position: fixed;
+}

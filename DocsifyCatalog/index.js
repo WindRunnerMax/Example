@@ -1,5 +1,3 @@
-import styles from './styles.css';
-
 function loadCatalog(hook, vm) {
   hook.doneEach(function() {
     var level = [0, 0, 0];

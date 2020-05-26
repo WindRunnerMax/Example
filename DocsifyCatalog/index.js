@@ -15,13 +15,13 @@ function loadCatalog(hook, vm) {
     title.appendChild(titleText);
     title.appendChild(titleShrink);
     title.addEventListener('click',(e) => {
-        ul.className = "hide";
-        document.getElementById("contract").className="contract";
+        ul.classList.add("hide");
+        document.getElementById("contract").classList.remove("hide");
     }) 
 
     ul.appendChild(title);
     ul.setAttribute("id","catalog");
-    ul.className = "hide";
+    ul.className = "catalog hide";
     nodeList.forEach(v => {
         if(v.nodeName.match(/H[123]/)){
             var li = document.createElement("li");
@@ -56,8 +56,8 @@ function loadCatalog(hook, vm) {
     contract.setAttribute("id","contract");
     contract.className = "contract";
     contract.addEventListener('click',(e) => {
-        ul.className = "catalog";
-        contract.className="hide";
+        ul.classList.remove("hide");
+        contract.classList.add("hide");
     }) 
 
     document.getElementsByTagName("body")[0].appendChild(ul);

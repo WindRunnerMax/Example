@@ -58,8 +58,5 @@
     overflow: hidden;
 }
 .hide{
-    border: 1px solid #eee;
-    right: -180px; 
-    top: 170px;
-    position: fixed;
+    right: -170px; 
 }

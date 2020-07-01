@@ -1,0 +1,28 @@
+.sidebar-nav>ul>li {
+    overflow: hidden;
+    margin: 6px 0;
+}
+
+/*.sidebar-nav > ul{
+    margin: 0 5px;
+}*/
+
+.sidebar-nav>ul>li>p {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-nav>ul>li>p>.count{
+    color: #aaa;
+    font-weight: normal;
+    margin-right: 10px; 
+}
+
+.hide{
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+}

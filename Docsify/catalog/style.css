@@ -57,6 +57,6 @@
     transition: all .5s;
     overflow: hidden;
 }
-.hide{
+.catalog-hide{
     right: -170px; 
 }

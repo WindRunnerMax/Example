@@ -21,7 +21,7 @@
     margin-right: 10px; 
 }
 
-.hide{
+.ul-hide{
     height: 0;
     overflow: hidden;
     transition: all 0.5s;

@@ -1,3 +1,5 @@
+import style from "./style.css";
+
 var loadSlidebar = function(hook, vm) {
     hook.init(function() {
         vm.record = [];

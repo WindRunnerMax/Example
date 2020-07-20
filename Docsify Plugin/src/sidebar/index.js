@@ -11,6 +11,7 @@ var loadSlidebar = function(hook, vm) {
             var ul = p.nextSibling;
             var lis = ul.childNodes;
             p.innerHTML = `<div>${p.innerText}</div><div class="count">${lis.length}</div>`;
+            p.addEventListener("click", e => e.stopPropagation());
             var height = Array.prototype.reduce.call(lis, (pre, now) => pre + now.offsetHeight + 6, 0);
             ul.classList.add("ul-hide");
             if(vm.record[pIndex]) ul.style.height = `${height}px`;

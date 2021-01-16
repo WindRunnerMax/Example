@@ -16,7 +16,7 @@ function loadCatalog(hook, vm) {
         titleShrink.className = "iconfont icon-youjiantou-copy";
         title.appendChild(titleText);
         title.appendChild(titleShrink);
-        title.addEventListener('click', (e) => {
+        title.addEventListener("click", (e) => {
             ul.classList.add("catalog-hide");
             document.getElementById("contract").classList.remove("catalog-hide");
         })
@@ -37,14 +37,16 @@ function loadCatalog(hook, vm) {
                     ++level[1];
                     level[2] = 0;
                     li.className = "level2";
+                    li.title = v.innerText;
                     li.innerText = `${level[0]}.${level[1]} ${v.innerText}`;
                 } else if (v.nodeName === "H3") {
                     ++level[2];
                     li.className = "level3";
+                    li.title = v.innerText;
                     li.innerText = `${level[0]}.${level[1]}.${level[2]} ${v.innerText}`;
                 }
-                li.addEventListener('click', (e) => {
-                    window.scrollTo({ top: v.offsetTop, left: 0, behavior: 'smooth' });
+                li.addEventListener("click", (e) => {
+                    window.scrollTo({ top: v.offsetTop, left: 0, behavior: "smooth" });
                 })
                 ul.appendChild(li);
             }
@@ -57,13 +59,13 @@ function loadCatalog(hook, vm) {
         contract.appendChild(icon);
         contract.setAttribute("id", "contract");
         contract.className = "contract";
-        contract.addEventListener('click', (e) => {
+        contract.addEventListener("click", (e) => {
             ul.classList.remove("catalog-hide");
             contract.classList.add("catalog-hide");
         })
 
-        document.getElementsByTagName("body")[0].appendChild(ul);
-        document.getElementsByTagName("body")[0].appendChild(contract);
+        document.body.appendChild(ul);
+        document.body.appendChild(contract);
     });
 }
 

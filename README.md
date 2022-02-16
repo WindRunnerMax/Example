@@ -2,7 +2,7 @@
 
 代码实例
 
-* `Docsify Plugin`: `Docsify`插件
-* `PHP Captcha Spot`: `PHP`验证码识别
-* `Python Captcha Spot CNN`: `Python`验证码识别`CNN`
-* `Yolov3 Target Detection`: `Yolov3`目标检测
+* `docsify-plugin`: `Docsify`插件。
+* `php-captcha-spot`: `PHP`验证码识别。
+* `python-captcha-spot-cnn`: `Python`验证码识别`CNN`。
+* `yolov3-target-detection`: `yolov3`目标检测。
